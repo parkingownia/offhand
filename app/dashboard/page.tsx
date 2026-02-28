@@ -30,12 +30,14 @@ export default function DashboardPage() {
   }).format(new Date());
 
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-12 text-slate-100">
-      <section className="mx-auto w-full max-w-5xl rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
+    <main className="min-h-screen bg-transparent px-6 py-12 text-[var(--foreground)]">
+      <section className="mx-auto w-full max-w-5xl rounded-3xl border border-[color:var(--portal-border)] bg-[color:var(--portal-surface)] p-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-sm">
         <header className="mb-8 flex flex-col gap-2">
           <h1 className="text-3xl font-semibold tracking-tight">Dashboard</h1>
-          <p className="text-slate-300">Pierwszy moduł Offhand jest gotowy.</p>
-          <p className="text-xs uppercase tracking-wide text-slate-400">
+          <p className="text-[color:var(--portal-muted)]">
+            Pierwszy moduł Offhand jest gotowy.
+          </p>
+          <p className="text-xs uppercase tracking-wide text-[#f6d7bf]/80">
             Wygenerowano: {generatedAt}
           </p>
         </header>
@@ -43,13 +45,15 @@ export default function DashboardPage() {
           {modules.map((module) => (
             <article
               key={module.path}
-              className="rounded-2xl border border-slate-800 bg-slate-950 p-5"
+              className="rounded-2xl border border-[color:var(--portal-border)] bg-[color:var(--portal-surface-soft)] p-5"
             >
               <h2 className="text-lg font-semibold">{module.name}</h2>
-              <p className="mt-2 text-sm text-slate-300">{module.description}</p>
+              <p className="mt-2 text-sm text-[color:var(--portal-muted)]">
+                {module.description}
+              </p>
               <Link
                 href={module.path}
-                className="mt-4 inline-block rounded-lg bg-cyan-400 px-3 py-2 text-sm font-semibold text-slate-900 transition hover:bg-cyan-300"
+                className="mt-4 inline-block rounded-lg bg-[color:var(--portal-accent)] px-3 py-2 text-sm font-semibold text-[#2d1b08] transition hover:bg-[#ffad58]"
               >
                 Przejdź do modułu
               </Link>

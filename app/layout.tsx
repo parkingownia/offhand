@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Sora } from "next/font/google";
+import ParallaxBackground from "./components/ParallaxBackground";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Offhand",
-  description: "Offhand service dashboard",
+  title: "Offhand Portal",
+  description: "Creative portal for brand strategy and digital offers.",
 };
 
 export default function RootLayout({
@@ -24,10 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${sora.variable} ${cormorant.variable} antialiased`}>
+        <ParallaxBackground />
+        <div className="site-shell">{children}</div>
       </body>
     </html>
   );

@@ -27,7 +27,10 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-1">
-        <label htmlFor="email" className="block text-sm font-medium text-slate-200">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-[color:var(--portal-muted)]"
+        >
           Email
         </label>
         <input
@@ -37,7 +40,7 @@ export default function LoginForm() {
           autoComplete="username"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 outline-none ring-cyan-300 focus:ring-2"
+          className="w-full rounded-lg border border-[color:var(--portal-border)] bg-[#0c1037]/80 px-3 py-2 text-[var(--foreground)] outline-none ring-[color:var(--portal-accent)] focus:ring-2"
           placeholder="admin@offhand.local"
           required
         />
@@ -46,7 +49,7 @@ export default function LoginForm() {
       <div className="space-y-1">
         <label
           htmlFor="password"
-          className="block text-sm font-medium text-slate-200"
+          className="block text-sm font-medium text-[color:var(--portal-muted)]"
         >
           Hasło
         </label>
@@ -57,7 +60,7 @@ export default function LoginForm() {
           autoComplete="current-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 outline-none ring-cyan-300 focus:ring-2"
+          className="w-full rounded-lg border border-[color:var(--portal-border)] bg-[#0c1037]/80 px-3 py-2 text-[var(--foreground)] outline-none ring-[color:var(--portal-accent)] focus:ring-2"
           placeholder="offhand123"
           required
         />
@@ -66,7 +69,7 @@ export default function LoginForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-cyan-400 px-4 py-2.5 font-semibold text-slate-900 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-xl bg-[color:var(--portal-accent)] px-4 py-2.5 font-semibold text-[#2d1b08] transition hover:bg-[#ffad58] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? "Logowanie..." : "Zaloguj się"}
       </button>

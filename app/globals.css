@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070a25;
+  --foreground: #ffe7cf;
+  --portal-deep: #050720;
+  --portal-ink: #121844;
+  --portal-surface: rgb(15 21 61 / 78%);
+  --portal-surface-soft: rgb(27 20 75 / 72%);
+  --portal-border: rgb(255 170 101 / 26%);
+  --portal-muted: #e7c7b0;
+  --portal-accent: #ff9436;
+  --portal-accent-soft: #ffd27d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sora);
+  --font-mono: var(--font-sora);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgb(255 148 54 / 12%) 0%, transparent 48%),
+    linear-gradient(180deg, var(--portal-deep) 0%, #090d2f 45%, #100c37 100%);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-sora), sans-serif;
+  min-height: 100vh;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+  overflow-x: clip;
+}
+
+.portal-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 1400px;
+}
+
+.portal-bg-layer {
+  position: absolute;
+  inset: -9%;
+  background-image: url("/offhand/offhand-background.png");
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.28;
+  transform: translate3d(0, 0, 0) scale(1.08);
+  transform-origin: center top;
+  filter: saturate(1.08) contrast(1.08);
+  will-change: transform;
+}
+
+.portal-bg-tint {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 45% at 75% 25%, rgb(255 152 64 / 20%) 0%, transparent 65%),
+    radial-gradient(60% 40% at 15% 75%, rgb(255 126 40 / 14%) 0%, transparent 66%),
+    linear-gradient(180deg, rgb(4 7 26 / 72%) 0%, rgb(8 11 36 / 64%) 100%);
+}
+
+.display-font {
+  font-family: var(--font-display), serif;
+}
+
+.glass-panel {
+  border: 1px solid var(--portal-border);
+  background: linear-gradient(140deg, rgb(11 15 47 / 88%) 0%, rgb(27 20 75 / 72%) 100%);
+  box-shadow: 0 20px 70px rgb(3 4 18 / 45%);
+  backdrop-filter: blur(12px);
+}
+
+.accent-chip {
+  border: 1px solid rgb(255 175 101 / 34%);
+  background: linear-gradient(135deg, rgb(255 147 54 / 24%) 0%, rgb(255 210 125 / 12%) 100%);
+}
+
+.soft-divider {
+  border-color: rgb(255 180 125 / 24%);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(255 151 63 / 0%);
+  }
+  50% {
+    box-shadow: 0 0 28px 2px rgb(255 151 63 / 34%);
+  }
+}
+
+.reveal {
+  animation: rise-in 680ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.delay-1 {
+  animation-delay: 120ms;
+}
+
+.delay-2 {
+  animation-delay: 220ms;
+}
+
+.delay-3 {
+  animation-delay: 320ms;
+}
+
+.floating {
+  animation: drift 8s ease-in-out infinite;
+}
+
+.pulsing {
+  animation: glow 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .floating,
+  .pulsing {
+    animation: none !important;
+  }
+
+  .portal-bg-layer {
+    transform: none !important;
+  }
 }

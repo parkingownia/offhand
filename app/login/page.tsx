@@ -3,13 +3,13 @@ import LoginForm from "./LoginForm";
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-12 text-slate-100">
-      <section className="mx-auto w-full max-w-md rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
+    <main className="min-h-screen bg-transparent px-6 py-12 text-[var(--foreground)]">
+      <section className="mx-auto w-full max-w-md rounded-3xl border border-[color:var(--portal-border)] bg-[color:var(--portal-surface)] p-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-sm">
         <h1 className="text-3xl font-semibold tracking-tight">Wejście do panelu</h1>
-        <p className="mt-2 text-sm text-slate-300">
+        <p className="mt-2 text-sm text-[color:var(--portal-muted)]">
           Wersja statyczna: formularz działa po stronie przeglądarki.
         </p>
-        <div className="mt-4 rounded-lg border border-slate-700 bg-slate-950 p-3 text-xs text-slate-300">
+        <div className="mt-4 rounded-lg border border-[color:var(--portal-border)] bg-[color:var(--portal-surface-soft)] p-3 text-xs text-[color:var(--portal-muted)]">
           Backend auth jest wyłączony na hostingu statycznym.
         </div>
 
@@ -19,7 +19,7 @@ export default function LoginPage() {
 
         <Link
           href="/"
-          className="mt-6 inline-block text-sm text-cyan-300 transition hover:text-cyan-200"
+          className="mt-6 inline-block text-sm text-[color:var(--portal-accent-soft)] transition hover:text-[color:var(--portal-accent)]"
         >
           Wróć na stronę główną
         </Link>
