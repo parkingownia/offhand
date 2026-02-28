@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local editor deployment config
 .vscode/ftp.json
+
+# local source image (already published from public/)
+lib/ChatGPT Image 28 lut 2026 o 22_47_31.png
