@@ -10,7 +10,7 @@ export default function Home() {
           </p>
           <h1 className="text-4xl font-semibold tracking-tight">Offhand</h1>
           <p className="max-w-2xl text-slate-600">
-            Bazowy serwis działa. Przejdź do dashboardu lub sprawdź API healthcheck.
+            Statyczna wersja serwisu pod hosting FTP (OVH Perso) jest gotowa.
           </p>
         </header>
         <div className="flex flex-col gap-3 sm:flex-row">
@@ -24,13 +24,13 @@ export default function Home() {
             href="/panel"
             className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 font-medium text-slate-700 transition hover:bg-slate-50"
           >
-            Panel użytkownika
+            Panel demo
           </Link>
           <Link
-            href="/api/health"
+            href="/health"
             className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 font-medium text-slate-700 transition hover:bg-slate-50"
           >
-            API Health JSON
+            Status strony
           </Link>
         </div>
       </section>

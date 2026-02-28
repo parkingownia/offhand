@@ -1,10 +1,12 @@
 # Offhand
 
-Projekt bazowy `Next.js 16` z modułem:
-- logowanie (`/login`)
-- chroniony panel użytkownika (`/panel`)
+Projekt bazowy `Next.js 16` w trybie statycznym (`output: export`) pod hosting FTP.
+
+Dostępne podstrony:
+- logowanie demo (`/login`)
+- panel demo (`/panel`)
 - publiczny dashboard (`/dashboard`)
-- healthcheck API (`/api/health`)
+- status strony (`/health`)
 
 ## Uruchomienie
 
@@ -20,12 +22,4 @@ npm run lint
 npm run build
 ```
 
-## Domyślne logowanie (dev)
-
-- email: `admin@offhand.local`
-- hasło: `offhand123`
-
-Możesz nadpisać przez zmienne środowiskowe:
-- `OFFHAND_ADMIN_EMAIL`
-- `OFFHAND_ADMIN_PASSWORD`
-- `OFFHAND_AUTH_SECRET`
+Po buildzie wygenerowany katalog `out/` wysyłasz na serwer FTP (np. OVH Perso).

@@ -5,14 +5,12 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-slate-950 px-6 py-12 text-slate-100">
       <section className="mx-auto w-full max-w-md rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
-        <h1 className="text-3xl font-semibold tracking-tight">Logowanie</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Wejście do panelu</h1>
         <p className="mt-2 text-sm text-slate-300">
-          Zaloguj się, aby wejść do panelu użytkownika.
+          Wersja statyczna: formularz działa po stronie przeglądarki.
         </p>
         <div className="mt-4 rounded-lg border border-slate-700 bg-slate-950 p-3 text-xs text-slate-300">
-          Konto startowe: <span className="font-mono">admin@offhand.local</span>
-          <br />
-          Hasło startowe: <span className="font-mono">offhand123</span>
+          Backend auth jest wyłączony na hostingu statycznym.
         </div>
 
         <div className="mt-6">

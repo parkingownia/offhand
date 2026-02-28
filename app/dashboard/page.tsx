@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const modules = [
   {
-    name: "Healthcheck API",
-    path: "/api/health",
-    description: "Szybki status serwisu do monitoringu i smoke testu.",
+    name: "Status strony",
+    path: "/health",
+    description: "Statyczny status wdrożenia i gotowości serwisu.",
   },
   {
     name: "Homepage",
@@ -12,14 +12,14 @@ const modules = [
     description: "Punkt startowy aplikacji i nawigacja do modułów.",
   },
   {
-    name: "Logowanie",
+    name: "Logowanie demo",
     path: "/login",
-    description: "Wejście do modułu auth i ustanowienie sesji użytkownika.",
+    description: "Przejście do panelu bez backendowej sesji.",
   },
   {
-    name: "Panel użytkownika",
+    name: "Panel demo",
     path: "/panel",
-    description: "Chroniona strefa dostępna po poprawnym logowaniu.",
+    description: "Wersja front-end bez autoryzacji po stronie serwera.",
   },
 ];
 

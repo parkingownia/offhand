@@ -8,34 +8,17 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError(null);
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        const body = (await response.json().catch(() => null)) as
-          | { error?: string }
-          | null;
-        setError(body?.error || "Nie udało się zalogować.");
-        return;
+      // Static hosting mode: local-only transition without backend auth.
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      if (email.trim() && password.trim()) {
+        router.push("/panel");
       }
-
-      router.replace("/panel");
-      router.refresh();
-    } catch {
-      setError("Błąd połączenia z serwerem.");
     } finally {
       setIsSubmitting(false);
     }
@@ -79,12 +62,6 @@ export default function LoginForm() {
           required
         />
       </div>
-
-      {error ? (
-        <p className="rounded-md border border-red-400/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
-          {error}
-        </p>
-      ) : null}
 
       <button
         type="submit"
