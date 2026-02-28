@@ -15,10 +15,16 @@ export default function Home() {
         </header>
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/dashboard"
+            href="/login"
             className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 font-medium text-white transition hover:bg-slate-700"
           >
-            Otwórz Dashboard
+            Zaloguj się
+          </Link>
+          <Link
+            href="/panel"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            Panel użytkownika
           </Link>
           <Link
             href="/api/health"

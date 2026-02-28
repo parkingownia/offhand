@@ -11,6 +11,16 @@ const modules = [
     path: "/",
     description: "Punkt startowy aplikacji i nawigacja do modułów.",
   },
+  {
+    name: "Logowanie",
+    path: "/login",
+    description: "Wejście do modułu auth i ustanowienie sesji użytkownika.",
+  },
+  {
+    name: "Panel użytkownika",
+    path: "/panel",
+    description: "Chroniona strefa dostępna po poprawnym logowaniu.",
+  },
 ];
 
 export default function DashboardPage() {
