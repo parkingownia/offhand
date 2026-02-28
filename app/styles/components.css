@@ -1,0 +1,172 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-decoration: none;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--deep-navy);
+  color: var(--text-contrast);
+  border-color: var(--deep-navy);
+}
+
+.btn--primary:hover {
+  background: var(--soft-navy);
+  border-color: var(--accent-orange);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--deep-navy);
+  border-color: var(--light-stone);
+}
+
+.btn--secondary:hover {
+  color: var(--deep-navy);
+  border-color: var(--accent-orange);
+  background: rgb(232 119 34 / 8%);
+}
+
+.btn--contrast {
+  color: var(--text-contrast);
+  border-color: rgb(244 241 236 / 35%);
+}
+
+.btn--contrast:hover {
+  border-color: var(--accent-orange);
+  color: var(--text-contrast);
+  background: rgb(232 119 34 / 12%);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--light-stone);
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 46%);
+  color: var(--text-muted);
+  padding: 7px 13px;
+  font-size: 0.79rem;
+  line-height: 1;
+  transition:
+    border-color 220ms ease,
+    color 220ms ease,
+    background-color 220ms ease;
+}
+
+.chip:hover {
+  border-color: var(--accent-orange);
+  color: var(--deep-navy);
+}
+
+.chip--active {
+  border-color: var(--accent-orange);
+  background: rgb(232 119 34 / 12%);
+  color: var(--deep-navy);
+}
+
+.card {
+  border: 1px solid var(--light-stone);
+  border-radius: var(--radius-md);
+  background: rgb(255 255 255 / 72%);
+  box-shadow: var(--shadow-soft);
+}
+
+.card--dark {
+  border-color: rgb(244 241 236 / 22%);
+  background: rgb(14 26 43 / 64%);
+  color: var(--text-contrast);
+}
+
+.card--dark .chip {
+  border-color: rgb(244 241 236 / 24%);
+  background: rgb(244 241 236 / 10%);
+  color: rgb(244 241 236 / 86%);
+}
+
+.card--dark .chip:hover,
+.card--dark .chip--active {
+  border-color: var(--accent-orange);
+  background: rgb(232 119 34 / 18%);
+  color: var(--text-contrast);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.field__control {
+  border: 1px solid var(--light-stone);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text-primary);
+  padding: 10px 12px;
+  font: inherit;
+  line-height: 1.2;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.field__control:focus-visible {
+  outline: none;
+  border-color: var(--accent-orange);
+  box-shadow: var(--focus-ring);
+}
+
+.separator {
+  height: 1px;
+  background: var(--light-stone);
+}
+
+.text-link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentcolor;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 220ms ease;
+}
+
+.text-link:hover {
+  color: var(--accent-orange);
+}
+
+.text-link:hover::after {
+  transform: scaleX(1);
+}

@@ -57,197 +57,242 @@ const resources = [
   },
 ];
 
+const interiorImage =
+  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2400&q=80";
+const portraitImage =
+  "https://images.unsplash.com/photo-1554629947-334ff61d85dc?auto=format&fit=crop&w=1600&q=80";
+const resourceImages = [
+  "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80",
+  "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80",
+  "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1400&q=80",
+];
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f6f4ef]/95 px-4 pb-20 pt-6 text-[#1f282a] sm:px-8 lg:px-12">
-      <div className="mx-auto w-full max-w-6xl">
-        <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[#d8d4ca] pb-5">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-[#8b8375]">
-              Offhand Studio
-            </p>
-            <p className="display-font mt-1 text-2xl text-[#1f282a]">Portal marki</p>
+    <main>
+      <div className="scroll-progress" aria-hidden="true">
+        <span className="scroll-progress__bar" />
+      </div>
+
+      <header className="site-header" data-reveal>
+        <div className="page site-header__inner">
+          <div className="site-header__brand">
+            <p className="site-header__tag">Offhand Studio</p>
+            <p className="site-header__title display-font">Portal marki</p>
           </div>
-          <nav className="hidden items-center gap-6 text-sm text-[#5c615f] md:flex">
+
+          <nav className="site-header__nav">
             {nav.map((item) => (
-              <a key={item.href} href={item.href} className="transition hover:text-[#1f282a]">
+              <a key={item.href} href={item.href} className="text-link">
                 {item.label}
               </a>
             ))}
           </nav>
-          <a
-            href="#book"
-            className="rounded-full bg-[#1f282a] px-5 py-2.5 text-sm font-medium text-[#f6f4ef] transition hover:bg-[#2a3638]"
-          >
+
+          <a href="#book" className="btn btn--primary">
             Umów rozmowę
           </a>
-        </header>
+        </div>
+      </header>
 
-        <section className="grid gap-10 pb-14 pt-14 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+      <section className="hero section section--navy" data-reveal>
+        <svg
+          className="hero__line"
+          viewBox="0 0 1000 420"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            className="hero__line-path hero__line-path--one"
+            data-line
+            d="M-20,280 C120,220 200,180 320,220 C440,260 520,220 640,170 C760,120 860,140 1040,110"
+          />
+          <path
+            className="hero__line-path hero__line-path--two"
+            data-line
+            d="M-40,330 C110,280 230,240 350,274 C470,308 570,270 690,220 C820,166 900,182 1080,150"
+          />
+        </svg>
+
+        <div className="page hero__grid">
           <article>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#8c6d4f]">
-              Kierunek pracy
-            </p>
-            <h1 className="display-font mt-4 max-w-4xl text-5xl leading-[1.05] text-[#1e2527] sm:text-7xl">
+            <p className="hero__eyebrow">Kierunek pracy</p>
+            <h1 className="hero__title display-font">
               Strona, która mówi ludzkim językiem i prowadzi klienta do decyzji.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#535a58]">
+            <p className="hero__lead">
               Projektujemy komunikację i portal w stylu skandynawskim: dużo światła,
               porządek i treść bez marketingowej waty. Ma być jasno, spokojnie i
               skutecznie.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#workshops"
-                className="rounded-full bg-[#db9d64] px-5 py-2.5 text-sm font-semibold text-[#3a2412] transition hover:bg-[#e7aa72]"
-              >
+            <div className="hero__actions">
+              <a href="#workshops" className="btn btn--primary">
                 Zacznij od warsztatu
               </a>
-              <Link
-                href="/dashboard"
-                className="rounded-full border border-[#c8c3b6] px-5 py-2.5 text-sm font-semibold text-[#2f383a] transition hover:bg-[#ece9e2]"
-              >
+              <Link href="/dashboard" className="btn btn--secondary btn--contrast">
                 Zobacz demo portalu
               </Link>
             </div>
           </article>
 
-          <aside className="space-y-5 border-l border-[#d8d4ca] pl-6 lg:pl-8">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#8b8375]">
-              Wybierz klimat marki
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {moods.map((mood) => (
+          <aside className="hero__aside card card--dark">
+            <p className="hero__aside-title">Wybierz klimat marki</p>
+            <div className="hero__chips">
+              {moods.map((mood, index) => (
                 <button
                   key={mood}
                   type="button"
-                  className="rounded-full border border-[#d4cec1] bg-[#f8f6f1] px-3 py-1.5 text-xs text-[#4e5654] transition hover:border-[#b6ad9a] hover:text-[#1f282a]"
+                  className={`chip ${index === 0 ? "chip--active" : ""}`}
                 >
                   {mood}
                 </button>
               ))}
             </div>
-            <p className="text-sm leading-relaxed text-[#5a615f]">
+            <p className="hero__aside-text">
               Wybierasz ton, a my przekładamy to na konkret: teksty, układ strony i
               plan działań, który da się wdrożyć od razu.
             </p>
           </aside>
-        </section>
+        </div>
+      </section>
 
-        <section id="workshops" className="border-t border-[#d8d4ca] py-12">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="display-font text-4xl text-[#1f282a] sm:text-5xl">
-              Formy współpracy
-            </h2>
-            <p className="max-w-2xl text-sm text-[#5a615f]">
+      <section
+        id="workshops"
+        className="section section--paper section--image divider-top"
+        data-reveal
+      >
+        <div
+          className="section__bg"
+          data-parallax
+          data-speed="0.06"
+          data-max="12"
+          style={{ backgroundImage: `url(${interiorImage})` }}
+          aria-hidden="true"
+        />
+
+        <div className="page">
+          <div className="section-head">
+            <h2 className="section-title display-font">Formy współpracy</h2>
+            <p className="section-copy">
               Każda forma kończy się konkretnym efektem. Bez długich prezentacji, za to
               z materiałem gotowym do użycia.
             </p>
           </div>
-          <div className="mt-8 divide-y divide-[#d8d4ca]">
+
+          <div className="tracks">
             {paths.map((path) => (
-              <article key={path.name} className="grid gap-4 py-6 md:grid-cols-[1.1fr_2fr_auto] md:items-center">
+              <article key={path.name} className="track-row">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#8c6d4f]">{path.length}</p>
-                  <h3 className="mt-1 text-2xl text-[#222b2d]">{path.name}</h3>
+                  <p className="track-row__meta">{path.length}</p>
+                  <h3 className="track-row__title display-font">{path.name}</h3>
                 </div>
-                <p className="text-sm leading-relaxed text-[#58605e]">{path.description}</p>
-                <Link
-                  href={path.href}
-                  className="justify-self-start rounded-full bg-[#1f282a] px-4 py-2 text-sm font-medium text-[#f4f2ec] transition hover:bg-[#2b3638]"
-                >
+                <p className="track-row__desc">{path.description}</p>
+                <Link href={path.href} className="btn btn--primary">
                   {path.action}
                 </Link>
               </article>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section
-          id="about"
-          className="grid gap-8 border-t border-[#d8d4ca] py-12 lg:grid-cols-[1.1fr_1fr]"
-        >
+      <section id="about" className="section section--paper divider-top" data-reveal>
+        <div className="page about-grid">
           <article>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#8b8375]">Jak pracujemy</p>
-            <h2 className="display-font mt-3 text-4xl text-[#1f282a] sm:text-5xl">
+            <p className="hero__eyebrow" style={{ color: "#677484" }}>
+              Jak pracujemy
+            </p>
+            <h2 className="section-title display-font">
               Skandynawska prostota i bardzo konkretna treść.
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#58605e]">
+            <p className="section-copy">
               Dbamy o przestrzeń, czytelną hierarchię i język, który brzmi jak rozmowa.
               Dzięki temu klient od razu rozumie, czym się zajmujesz i co zrobić dalej.
             </p>
-            <a
-              href="#one-on-one"
-              className="mt-6 inline-block rounded-full border border-[#c8c3b6] px-5 py-2.5 text-sm font-semibold text-[#2f383a] transition hover:bg-[#ece9e2]"
-            >
+            <a href="#one-on-one" className="btn btn--secondary">
               Zobacz konsultacje 1:1
             </a>
           </article>
-          <article id="one-on-one" className="space-y-4">
-            {[
-              "Porządkujemy przekaz, żeby klient od razu łapał sens oferty.",
-              "Układamy stronę tak, by naturalnie prowadziła do kontaktu.",
-              "Dajemy plan publikacji, który da się utrzymać co tydzień.",
-            ].map((item) => (
-              <div key={item} className="border-l-2 border-[#d6a16b] pl-4">
-                <p className="text-sm text-[#4f5755]">{item}</p>
-              </div>
-            ))}
-          </article>
-        </section>
 
-        <section id="resources" className="border-t border-[#d8d4ca] py-12">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="display-font text-4xl text-[#1f282a] sm:text-5xl">Materiały</h2>
-            <Link
-              href="/health"
-              className="rounded-full border border-[#c8c3b6] px-5 py-2.5 text-sm font-semibold text-[#2f383a] transition hover:bg-[#ece9e2]"
-            >
+          <article id="one-on-one" className="about-side">
+            <figure className="portrait card" data-parallax data-speed="0.04" data-max="6">
+              <img
+                className="portrait__image"
+                src={portraitImage}
+                alt="Portret osoby w naturalnym świetle na neutralnym tle"
+                loading="lazy"
+              />
+            </figure>
+
+            <ul className="about-list">
+              {[
+                "Porządkujemy przekaz, żeby klient od razu łapał sens oferty.",
+                "Układamy stronę tak, by naturalnie prowadziła do kontaktu.",
+                "Dajemy plan publikacji, który da się utrzymać co tydzień.",
+              ].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="resources" className="section section--paper divider-top" data-reveal>
+        <div className="page">
+          <div className="section-head">
+            <h2 className="section-title display-font">Materiały</h2>
+            <Link href="/health" className="btn btn--secondary">
               Sprawdź status strony
             </Link>
           </div>
-          <div className="mt-7 grid gap-5 md:grid-cols-3">
-            {resources.map((resource) => (
-              <article key={resource.title} className="space-y-2">
-                <h3 className="text-xl text-[#1f282a]">{resource.title}</h3>
-                <p className="text-sm text-[#5b615f]">{resource.detail}</p>
-                <button
-                  type="button"
-                  className="rounded-full bg-[#1f282a] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#f4f2ec] transition hover:bg-[#2b3638]"
+
+          <div className="resource-grid">
+            {resources.map((resource, index) => (
+              <article key={resource.title} className="resource-card card">
+                <div
+                  className="resource-card__media"
+                  data-parallax
+                  data-speed="0.04"
+                  data-max="6"
                 >
+                  <img
+                    src={resourceImages[index % resourceImages.length]}
+                    alt="Detal biurka, notatnika i szkicu w naturalnym świetle"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="resource-card__title display-font">{resource.title}</h3>
+                <p className="resource-card__detail">{resource.detail}</p>
+                <button type="button" className="btn btn--primary">
                   Poproś o dostęp
                 </button>
               </article>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section
-          id="book"
-          className="mt-2 rounded-3xl bg-[#1f282a] px-6 py-10 text-[#f5f2ea] sm:px-10"
-        >
-          <p className="text-xs uppercase tracking-[0.25em] text-[#d7b491]">Następny krok</p>
-          <div className="mt-4 grid gap-6 lg:grid-cols-[1.4fr_auto] lg:items-center">
-            <h2 className="display-font max-w-3xl text-4xl leading-tight sm:text-5xl">
+      <section id="book" className="section cta divider-top" data-reveal>
+        <div className="page">
+          <p className="cta__label">Następny krok</p>
+          <div className="cta__grid">
+            <h2 className="cta__title display-font">
               Umów 60 minut rozmowy i wyjdź z jasnym planem na najbliższy miesiąc.
             </h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="cta__actions">
               <a
                 href="mailto:hello@offhand.pl?subject=Rozmowa%20o%20stronie%20i%20ofercie"
-                className="rounded-full bg-[#db9d64] px-5 py-2.5 text-sm font-semibold text-[#3a2412] transition hover:bg-[#e7aa72]"
+                className="btn btn--primary"
               >
                 Napisz: hello@offhand.pl
               </a>
-              <Link
-                href="/login"
-                className="rounded-full border border-[#6a7475] px-5 py-2.5 text-sm font-semibold text-[#f5f2ea] transition hover:bg-white/10"
-              >
+              <Link href="/login" className="btn btn--secondary btn--contrast">
                 Wejdź do strefy demo
               </Link>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
   );
 }

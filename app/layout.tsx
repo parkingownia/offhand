@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
-import ParallaxBackground from "./components/ParallaxBackground";
+import MotionEffects from "./components/MotionEffects";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -27,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={`${manrope.variable} ${cormorant.variable} antialiased`}>
-        <ParallaxBackground />
+        <MotionEffects />
+        <div className="site-backdrop" aria-hidden="true" />
         <div className="site-shell">{children}</div>
       </body>
     </html>
