@@ -15,8 +15,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Offhand Portal",
-  description: "Creative portal for brand strategy and digital offers.",
+  title: "Offhand - Portal marki",
+  description: "Prosty portal po polsku: oferta, konsultacje i materiały.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={`${manrope.variable} ${cormorant.variable} antialiased`}>
         <ParallaxBackground />
         <div className="site-shell">{children}</div>
