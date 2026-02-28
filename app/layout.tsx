@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Sora } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import ParallaxBackground from "./components/ParallaxBackground";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sora.variable} ${cormorant.variable} antialiased`}>
+      <body className={`${manrope.variable} ${cormorant.variable} antialiased`}>
         <ParallaxBackground />
         <div className="site-shell">{children}</div>
       </body>
