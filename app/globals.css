@@ -6,8 +6,8 @@
 @theme inline {
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);
-  --font-sans: var(--font-manrope);
-  --font-mono: var(--font-manrope);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
 }
 
 *,

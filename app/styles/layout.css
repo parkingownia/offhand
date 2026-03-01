@@ -1,5 +1,5 @@
 body {
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-body), sans-serif;
   background: linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
   color: var(--text-primary);
   overflow-x: hidden;
@@ -22,10 +22,18 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(95% 68% at 12% 2%, rgb(111 175 199 / 22%), transparent 63%),
+    radial-gradient(95% 68% at 12% 2%, rgb(143 191 217 / 22%), transparent 63%),
     radial-gradient(86% 62% at 84% 16%, rgb(184 168 216 / 18%), transparent 65%),
     radial-gradient(74% 56% at 48% 88%, rgb(94 198 198 / 16%), transparent 70%);
   filter: blur(2px);
+}
+
+html[data-theme="geo"] .ambient-backdrop {
+  background:
+    radial-gradient(95% 68% at 12% 2%, rgb(143 191 217 / 20%), transparent 62%),
+    radial-gradient(84% 62% at 84% 16%, rgb(184 168 216 / 12%), transparent 63%),
+    radial-gradient(72% 56% at 48% 88%, rgb(94 198 198 / 12%), transparent 67%),
+    radial-gradient(50% 40% at 72% 22%, var(--copper-glow), transparent 66%);
 }
 
 .site-shell {
@@ -48,7 +56,7 @@ body::after {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
+  z-index: 30;
   border-bottom: 1px solid rgb(255 255 255 / 34%);
   background: rgb(244 248 251 / 74%);
   backdrop-filter: blur(16px);
@@ -59,7 +67,13 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
+  gap: var(--space-2);
+}
+
+.site-header__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .site-logo {
@@ -69,8 +83,10 @@ body::after {
 }
 
 .site-logo__mark {
-  font-family: var(--font-display), serif;
-  font-size: 1.46rem;
+  font-family: var(--font-head), sans-serif;
+  font-size: 1.42rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
@@ -89,23 +105,73 @@ body::after {
 
 @media (min-width: 980px) {
   .site-nav {
-    display: flex;
+    display: inline-flex;
   }
 }
 
 .site-nav__link {
+  position: relative;
   text-decoration: none;
   font-size: 0.88rem;
   color: var(--text-secondary);
-  border-bottom: 1px solid transparent;
+  padding: 2px 0;
+  border-radius: var(--radius-nav);
   transition:
     color 900ms ease,
-    border-color 900ms ease;
+    background-color 900ms ease;
+}
+
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: var(--line-copper);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms ease;
 }
 
 .site-nav__link:hover {
   color: var(--text-primary);
-  border-color: rgb(111 175 199 / 55%);
+}
+
+.site-nav__link.is-active {
+  color: var(--text-primary);
+}
+
+.site-nav__link.is-active::after,
+.site-nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+html[data-theme="geo"] .site-nav {
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid rgb(28 31 36 / 12%);
+  border-radius: 0;
+  background: rgb(255 255 255 / 44%);
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme="geo"] .site-nav__link {
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border-radius: 0;
+}
+
+html[data-theme="geo"] .site-nav__link::after {
+  left: 10px;
+  right: 10px;
+  bottom: 5px;
+}
+
+html[data-theme="geo"] .site-nav__link.is-active {
+  background: rgb(255 255 255 / 68%);
 }
 
 .site-footer {
@@ -143,7 +209,7 @@ body::after {
 
 .site-footer__links a:hover {
   color: var(--text-primary);
-  border-color: rgb(111 175 199 / 55%);
+  border-color: var(--line-copper);
 }
 
 .studio-section {
@@ -173,6 +239,7 @@ body::after {
   border-bottom: 1px solid var(--line-subtle);
   background:
     radial-gradient(120% 80% at 14% 8%, rgb(255 255 255 / 68%) 0%, transparent 58%),
+    radial-gradient(44% 24% at 82% 22%, var(--copper-glow), transparent 70%),
     linear-gradient(180deg, rgb(244 248 251 / 94%) 0%, rgb(234 242 247 / 86%) 100%);
 }
 
@@ -196,7 +263,7 @@ body::after {
     radial-gradient(2px 2px at 20% 20%, rgb(111 175 199 / 25%), transparent 70%),
     radial-gradient(2px 2px at 70% 40%, rgb(184 168 216 / 20%), transparent 70%),
     radial-gradient(2px 2px at 35% 75%, rgb(94 198 198 / 20%), transparent 70%);
-  opacity: 0.75;
+  opacity: 0.72;
   animation: particleFlow 17s linear infinite;
 }
 
@@ -262,10 +329,17 @@ body::after {
   border: 1px solid rgb(255 255 255 / 32%);
 }
 
+html[data-theme="geo"] .hero__manifesto {
+  border-color: var(--line-copper-soft);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 1px rgb(255 255 255 / 22%);
+}
+
 .hero__manifesto-title {
   margin: var(--space-2) 0 0;
   font-size: clamp(1.6rem, 2.3vw, 2.3rem);
-  line-height: 1.2;
+  line-height: 1.18;
   max-width: 20ch;
 }
 
@@ -286,20 +360,41 @@ body::after {
 
 .hero-line__path {
   fill: none;
-  stroke-width: 1.35;
+}
+
+.hero-line--classic .hero-line__path {
   stroke-linecap: round;
 }
 
 .hero-line__path--a {
   stroke: rgb(111 175 199 / 82%);
+  stroke-width: 1.35;
   filter: drop-shadow(0 0 12px rgb(111 175 199 / 26%));
   stroke-dasharray: 1600;
 }
 
 .hero-line__path--b {
   stroke: rgb(184 168 216 / 56%);
+  stroke-width: 1.35;
   filter: drop-shadow(0 0 10px rgb(184 168 216 / 18%));
   stroke-dasharray: 1650;
+}
+
+.hero-line--geo {
+  opacity: var(--line-opacity);
+}
+
+.hero-line--geo .hero-line__path--geo {
+  stroke: rgb(111 175 199 / 65%);
+  stroke-linecap: butt;
+}
+
+.hero-line--geo .hero-line__path--geo.is-copper {
+  stroke: var(--copper-base);
+}
+
+.hero-line--geo .hero-line__path--geo.is-prism {
+  stroke: url(#prism-gradient);
 }
 
 .section-head {
@@ -365,6 +460,10 @@ body::after {
   color: var(--text-soft);
 }
 
+html[data-theme="geo"] .impact-grid__label {
+  color: var(--copper-deep);
+}
+
 .cards-grid {
   display: grid;
   gap: var(--space-3);
@@ -395,7 +494,7 @@ body::after {
   font-size: 0.76rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent-crystal-blue);
+  color: var(--copper-base);
 }
 
 .projects-grid {
@@ -414,7 +513,7 @@ body::after {
 }
 
 .project-card {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   overflow: hidden;
   border: 1px solid rgb(28 31 36 / 10%);
   background: rgb(255 255 255 / 68%);
@@ -429,6 +528,13 @@ body::after {
     radial-gradient(circle at 78% 78%, rgb(94 198 198 / 24%), transparent 44%);
 }
 
+html[data-theme="geo"] .project-card__visual {
+  background:
+    linear-gradient(135deg, rgb(143 191 217 / 24%) 0%, rgb(184 168 216 / 20%) 100%),
+    radial-gradient(circle at 18% 22%, rgb(255 255 255 / 82%), transparent 48%),
+    linear-gradient(200deg, rgb(184 115 51 / 12%) 0%, transparent 66%);
+}
+
 .project-card__body {
   padding: 18px 20px 20px;
 }
@@ -439,6 +545,10 @@ body::after {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-soft);
+}
+
+html[data-theme="geo"] .project-card__industry {
+  color: var(--copper-deep);
 }
 
 .project-card h2,
@@ -467,7 +577,7 @@ body::after {
 }
 
 .artist-list__item {
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-card);
   border: 1px solid rgb(28 31 36 / 14%);
   background: rgb(255 255 255 / 58%);
   padding: 10px 14px;
@@ -501,7 +611,7 @@ body::after {
 .contact-form {
   display: grid;
   gap: var(--space-3);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   border: 1px solid var(--line-subtle);
   background: rgb(255 255 255 / 66%);
   box-shadow: var(--shadow-light);
@@ -513,7 +623,7 @@ body::after {
 }
 
 .contact-aside {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   border: 1px solid var(--line-subtle);
   background: rgb(255 255 255 / 52%);
   box-shadow: var(--shadow-light);
@@ -542,7 +652,7 @@ body::after {
 }
 
 .principle-item {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   border: 1px solid var(--line-subtle);
   background: rgb(255 255 255 / 62%);
   padding: clamp(20px, 2.5vw, 30px);
@@ -560,7 +670,7 @@ body::after {
 }
 
 .cta-block {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
   border: 1px solid rgb(255 255 255 / 34%);
   background: linear-gradient(145deg, rgb(255 255 255 / 74%), rgb(255 255 255 / 48%));
   box-shadow: var(--shadow-soft);

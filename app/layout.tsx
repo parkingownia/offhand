@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Inter, Space_Grotesk } from "next/font/google";
 import { companyName } from "@/app/content/studio";
+import ThemeProvider from "@/src/theme/ThemeProvider";
+import { getThemeInitScript } from "@/src/theme/themes";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const bodyFont = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
+const classicHeadFont = Cormorant_Garamond({
+  variable: "--font-classic-head",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const geoHeadFont = Space_Grotesk({
+  variable: "--font-geo-head",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 const siteTitle = `Light Through Glass - Digital Craft by ${companyName}`;
@@ -45,8 +56,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl">
-      <body className={`${manrope.variable} ${cormorant.variable} antialiased`}>{children}</body>
+    <html lang="pl" data-theme="classic" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
+      </head>
+      <body
+        className={`${bodyFont.variable} ${classicHeadFont.variable} ${geoHeadFont.variable} antialiased`}
+      >
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
