@@ -10,6 +10,7 @@ type GeneratedLine = {
   kind: "base" | "copper" | "prism";
   width: number;
   opacity: number;
+  dashed: boolean;
   dashArray: string;
   duration: number;
   delay: number;
@@ -20,11 +21,14 @@ const VIEWBOX_HEIGHT = 1000;
 const MOBILE_BREAKPOINT = 840;
 
 const ANGLE_SET = [15, 25, 35, 45, 60, 75];
-const LINE_COUNT_DESKTOP = 18;
+const LINE_COUNT_DESKTOP = 20;
 const LINE_COUNT_MOBILE = 12;
+const CENTRAL_INTERSECTION_RATIO = 0.38;
 
 const OPACITY_MIN = 0.12;
 const OPACITY_MAX = 0.26;
+const COPPER_OPACITY_MIN = 0.1;
+const COPPER_OPACITY_MAX = 0.18;
 const COPPER_LINE_RATIO = 0.2;
 
 function seeded(index: number, factor: number) {
@@ -39,14 +43,20 @@ function clamp(value: number, min: number, max: number) {
 function createLines(isMobile: boolean): GeneratedLine[] {
   const count = isMobile ? LINE_COUNT_MOBILE : LINE_COUNT_DESKTOP;
   const copperStep = Math.max(1, Math.round(1 / COPPER_LINE_RATIO));
+  const centralCount = Math.round(count * CENTRAL_INTERSECTION_RATIO);
 
   return Array.from({ length: count }, (_, index) => {
+    const centralBand = index < centralCount;
     const angle = ANGLE_SET[index % ANGLE_SET.length] * (index % 2 === 0 ? 1 : -1);
     const angleRad = (angle * Math.PI) / 180;
 
-    const centerX = VIEWBOX_WIDTH * (0.14 + seeded(index + 1, 1.91) * 0.72);
-    const centerY = VIEWBOX_HEIGHT * (0.1 + seeded(index + 1, 2.37) * 0.8);
-    const lineLength = VIEWBOX_WIDTH * (1.3 + seeded(index + 1, 3.17) * 0.55);
+    const centerX = centralBand
+      ? VIEWBOX_WIDTH * (0.42 + seeded(index + 1, 1.91) * 0.16)
+      : VIEWBOX_WIDTH * (0.08 + seeded(index + 1, 1.91) * 0.84);
+    const centerY = centralBand
+      ? VIEWBOX_HEIGHT * (0.34 + seeded(index + 1, 2.37) * 0.32)
+      : VIEWBOX_HEIGHT * (0.08 + seeded(index + 1, 2.37) * 0.84);
+    const lineLength = VIEWBOX_WIDTH * (centralBand ? 1.95 : 1.35 + seeded(index + 1, 3.17) * 0.45);
 
     const half = lineLength / 2;
     const x1 = centerX - Math.cos(angleRad) * half;
@@ -54,9 +64,10 @@ function createLines(isMobile: boolean): GeneratedLine[] {
     const x2 = centerX + Math.cos(angleRad) * half;
     const y2 = centerY + Math.sin(angleRad) * half;
 
-    const isCurve = index % 5 === 0;
+    const isCurve = index % 10 < 3;
     const isPrism = index === 1 || index === Math.floor(count * 0.72);
     const isCopper = !isPrism && index % copperStep === 0;
+    const isDashed = !isPrism && index % 5 === 0;
 
     const curveOffset = 100 + seeded(index + 1, 4.71) * 130;
     const cx1 = centerX - Math.sin(angleRad) * curveOffset;
@@ -69,11 +80,17 @@ function createLines(isMobile: boolean): GeneratedLine[] {
       : `M ${x1.toFixed(2)} ${y1.toFixed(2)} L ${x2.toFixed(2)} ${y2.toFixed(2)}`;
 
     const progress = count > 1 ? index / (count - 1) : 0;
-    const opacity = clamp(
-      OPACITY_MIN + progress * (OPACITY_MAX - OPACITY_MIN),
-      OPACITY_MIN,
-      OPACITY_MAX,
-    );
+    const opacity = isCopper
+      ? clamp(
+          COPPER_OPACITY_MIN + progress * (COPPER_OPACITY_MAX - COPPER_OPACITY_MIN),
+          COPPER_OPACITY_MIN,
+          COPPER_OPACITY_MAX,
+        )
+      : clamp(
+          OPACITY_MIN + progress * (OPACITY_MAX - OPACITY_MIN),
+          OPACITY_MIN,
+          OPACITY_MAX,
+        );
 
     return {
       id: `geo-bg-line-${index}`,
@@ -81,8 +98,9 @@ function createLines(isMobile: boolean): GeneratedLine[] {
       kind: isPrism ? "prism" : isCopper ? "copper" : "base",
       width: isPrism || index % 7 === 0 ? 2 : 1,
       opacity,
-      dashArray: isPrism ? "0" : index % 3 === 0 ? "28 14" : "16 20",
-      duration: 36 + seeded(index + 1, 5.03) * 18,
+      dashed: isDashed,
+      dashArray: isDashed ? (index % 2 === 0 ? "26 16" : "18 20") : "0",
+      duration: isDashed ? 25 + seeded(index + 1, 5.03) * 20 : 40 + seeded(index + 1, 5.03) * 30,
       delay: -(seeded(index + 1, 6.19) * 8),
     };
   });
@@ -138,7 +156,7 @@ export default function GeoBackgroundLines() {
               : {
                   duration: 52,
                   repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
+                  ease: "linear",
                 }
           }
         >
@@ -156,7 +174,7 @@ export default function GeoBackgroundLines() {
                 reducedMotion
                   ? { strokeDashoffset: 0, opacity: line.opacity }
                   : {
-                      strokeDashoffset: [0, -280],
+                      strokeDashoffset: line.dashed ? [0, -280] : 0,
                       opacity: [line.opacity * 0.9, line.opacity, line.opacity * 0.92],
                     }
               }
