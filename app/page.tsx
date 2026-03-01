@@ -43,7 +43,7 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal className="hero__panel" delay={0.15}>
-            <GlassCard className="hero__manifesto">
+            <GlassCard className="hero__manifesto" material="copper" cornerMarks>
               <p className="eyebrow eyebrow--soft">Pozycjonowanie</p>
               <h2 className="hero__manifesto-title display-font">
                 Projektujemy strony premium dla marek z obszaru architektury, designu,

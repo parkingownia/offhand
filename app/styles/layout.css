@@ -36,6 +36,37 @@ html[data-theme="geo"] .ambient-backdrop {
     radial-gradient(50% 40% at 72% 22%, var(--copper-glow), transparent 66%);
 }
 
+.geo-bg-lines {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.geo-bg-lines svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.geo-bg-lines__path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.geo-bg-lines__path--base {
+  stroke: rgb(111 175 199 / 82%);
+}
+
+.geo-bg-lines__path--copper {
+  stroke: rgb(184 115 51 / 70%);
+}
+
+.geo-bg-lines__path--prism {
+  stroke: url(#geo-prism-gradient);
+}
+
 .site-shell {
   position: relative;
   z-index: 1;
@@ -381,7 +412,7 @@ html[data-theme="geo"] .hero__manifesto {
 }
 
 .hero-line--geo {
-  opacity: var(--line-opacity);
+  opacity: 1;
 }
 
 .hero-line--geo .hero-line__path--geo {
@@ -399,6 +430,20 @@ html[data-theme="geo"] .hero__manifesto {
 
 .section-head {
   margin-bottom: var(--space-4);
+}
+
+html[data-theme="geo"] .section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+html[data-theme="geo"] .section-head .eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 38px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-copper), transparent);
 }
 
 .section-head--with-link {

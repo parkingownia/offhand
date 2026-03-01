@@ -56,7 +56,7 @@ export const lineThemeConfig: Record<ThemeName, LineThemeConfig> = {
     mobileCount: 10,
     speedRange: [0.2, 0.8],
     angles: [15, 25, 35, 45, 60, 75],
-    opacityRange: [0.06, 0.16],
+    opacityRange: [0.12, 0.26],
     copperRatio: 0.2,
     prismLineCount: 2,
   },
