@@ -1,298 +1,157 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import StudioShell from "@/app/components/site/StudioShell";
+import AnimatedLine from "@/app/components/ui/AnimatedLine";
+import ButtonLink from "@/app/components/ui/ButtonLink";
+import GlassCard from "@/app/components/ui/GlassCard";
+import Reveal from "@/app/components/ui/Reveal";
+import Section from "@/app/components/ui/Section";
+import { capabilities, projects } from "@/app/content/studio";
 
-const nav = [
-  { label: "Warsztaty", href: "#workshops" },
-  { label: "Konsultacje 1:1", href: "#one-on-one" },
-  { label: "Materiały", href: "#resources" },
-  { label: "O nas", href: "#about" },
-];
+export const metadata: Metadata = {
+  title: "Cyfrowe rzemiosło światła",
+  description:
+    "Projektujemy precyzyjne doświadczenia webowe inspirowane światłem, szkłem i skandynawską dyscypliną formy.",
+};
 
-const moods = [
-  "Spokojnie i jasno",
-  "Odważnie i konkretnie",
-  "Twórczo, ale poukładanie",
-  "Ludzko i blisko klienta",
-  "Krótko i na temat",
-];
-
-const paths = [
-  {
-    name: "Warsztat marki",
-    length: "2 dni",
-    description:
-      "Po warsztacie masz gotowy kierunek komunikacji i plan publikacji na najbliższe tygodnie.",
-    action: "Zobacz szczegóły",
-    href: "/dashboard",
-  },
-  {
-    name: "Konsultacje 1:1",
-    length: "4 tygodnie",
-    description:
-      "Pracujemy regularnie nad ofertą i stroną, żeby klient wiedział, co robisz i dlaczego warto.",
-    action: "Przejdź do demo",
-    href: "/panel",
-  },
-  {
-    name: "Pakiet materiałów",
-    length: "we własnym tempie",
-    description:
-      "Checklisty i szablony pomagające pisać prościej i sprzedawać bez napinania się.",
-    action: "Sprawdź materiały",
-    href: "/health",
-  },
-];
-
-const resources = [
-  {
-    title: "Lista kontrolna oferty",
-    detail: "Prosty schemat: co pokazać, w jakiej kolejności i jak domknąć działanie.",
-  },
-  {
-    title: "Plan publikacji na 4 tygodnie",
-    detail: "Co publikować, żeby ludzie rozumieli Twoją usługę i chętniej pytali o współpracę.",
-  },
-  {
-    title: "Mapa cen i pakietów",
-    detail: "Jak uporządkować ceny i zakres pracy, żeby nie zaniżać swojej wartości.",
-  },
-];
-
-const interiorImage =
-  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2400&q=80";
-const portraitImage =
-  "https://images.unsplash.com/photo-1554629947-334ff61d85dc?auto=format&fit=crop&w=1600&q=80";
-const resourceImages = [
-  "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1400&q=80",
-];
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main>
-      <div className="scroll-progress" aria-hidden="true">
-        <span className="scroll-progress__bar" />
-      </div>
-
-      <header className="site-header" data-reveal>
-        <div className="page site-header__inner">
-          <div className="site-header__brand">
-            <p className="site-header__tag">Offhand Studio</p>
-            <p className="site-header__title display-font">Portal marki</p>
-          </div>
-
-          <nav className="site-header__nav">
-            {nav.map((item) => (
-              <a key={item.href} href={item.href} className="text-link">
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <a href="#book" className="btn btn--primary">
-            Umów rozmowę
-          </a>
-        </div>
-      </header>
-
-      <section className="hero section section--navy" data-reveal>
-        <svg
-          className="hero__line"
-          viewBox="0 0 1000 420"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            className="hero__line-path hero__line-path--one"
-            data-line
-            d="M-20,280 C120,220 200,180 320,220 C440,260 520,220 640,170 C760,120 860,140 1040,110"
-          />
-          <path
-            className="hero__line-path hero__line-path--two"
-            data-line
-            d="M-40,330 C110,280 230,240 350,274 C470,308 570,270 690,220 C820,166 900,182 1080,150"
-          />
-        </svg>
-
-        <div className="page hero__grid">
-          <article>
-            <p className="hero__eyebrow">Kierunek pracy</p>
-            <h1 className="hero__title display-font">
-              Strona, która mówi ludzkim językiem i prowadzi klienta do decyzji.
-            </h1>
+    <StudioShell>
+      <section className="hero">
+        <AnimatedLine />
+        <div className="page hero__inner">
+          <Reveal className="hero__content">
+            <p className="eyebrow">Light Through Glass</p>
+            <h1 className="hero__title display-font">Cyfrowe rzemiosło w najczystszej formie</h1>
+            <p className="hero__subtitle">
+              Projektujemy precyzyjne, architektoniczne doświadczenia webowe kształtowane
+              przez światło, przestrzeń i klarowność.
+            </p>
             <p className="hero__lead">
-              Projektujemy komunikację i portal w stylu skandynawskim: dużo światła,
-              porządek i treść bez marketingowej waty. Ma być jasno, spokojnie i
-              skutecznie.
+              Inspirujemy się strukturami kryształu i ambientowym dźwiękiem. Łączymy
+              skandynawską powściągliwość z inżynieryjną precyzją, aby każdy projekt był
+              dopracowanym obiektem cyfrowym.
             </p>
             <div className="hero__actions">
-              <a href="#workshops" className="btn btn--primary">
-                Zacznij od warsztatu
-              </a>
-              <Link href="/dashboard" className="btn btn--secondary btn--contrast">
-                Zobacz demo portalu
-              </Link>
+              <ButtonLink href="/mozliwosci" variant="primary">
+                Zobacz możliwości
+              </ButtonLink>
+              <ButtonLink href="/inspiracje" variant="secondary">
+                Poznaj inspiracje
+              </ButtonLink>
             </div>
-          </article>
+          </Reveal>
 
-          <aside className="hero__aside card card--dark">
-            <p className="hero__aside-title">Wybierz klimat marki</p>
-            <div className="hero__chips">
-              {moods.map((mood, index) => (
-                <button
-                  key={mood}
-                  type="button"
-                  className={`chip ${index === 0 ? "chip--active" : ""}`}
-                >
-                  {mood}
-                </button>
-              ))}
-            </div>
-            <p className="hero__aside-text">
-              Wybierasz ton, a my przekładamy to na konkret: teksty, układ strony i
-              plan działań, który da się wdrożyć od razu.
-            </p>
-          </aside>
+          <Reveal className="hero__panel" delay={0.15}>
+            <GlassCard className="hero__manifesto">
+              <p className="eyebrow eyebrow--soft">Pozycjonowanie</p>
+              <h2 className="hero__manifesto-title display-font">
+                Projektujemy strony premium dla marek z obszaru architektury, designu,
+                motoryzacji, kultury i technologii.
+              </h2>
+              <p className="hero__manifesto-copy">
+                To nie jest szablonowy landing. To precyzyjna przestrzeń decyzji,
+                zaprojektowana z dyscypliną, spokojem i głębią.
+              </p>
+            </GlassCard>
+          </Reveal>
         </div>
       </section>
 
-      <section
-        id="workshops"
-        className="section section--paper section--image divider-top"
-        data-reveal
-      >
-        <div
-          className="section__bg"
-          data-parallax
-          data-speed="0.06"
-          data-max="12"
-          style={{ backgroundImage: `url(${interiorImage})` }}
-          aria-hidden="true"
-        />
-
-        <div className="page">
-          <div className="section-head">
-            <h2 className="section-title display-font">Formy współpracy</h2>
-            <p className="section-copy">
-              Każda forma kończy się konkretnym efektem. Bez długich prezentacji, za to
-              z materiałem gotowym do użycia.
+      <Section className="section--soft">
+        <Reveal className="impact-grid">
+          <GlassCard>
+            <p className="impact-grid__label">Manifest</p>
+            <h3 className="display-font">Sztuka i rzemiosło</h3>
+            <p>
+              Wrażliwość na światło i rytm wspiera decyzje projektowe, ale centrum zawsze
+              pozostaje jakość wykonania.
             </p>
-          </div>
+          </GlassCard>
 
-          <div className="tracks">
-            {paths.map((path) => (
-              <article key={path.name} className="track-row">
-                <div>
-                  <p className="track-row__meta">{path.length}</p>
-                  <h3 className="track-row__title display-font">{path.name}</h3>
+          <GlassCard>
+            <p className="impact-grid__label">Jakość wdrożenia</p>
+            <h3 className="display-font">Precyzja inżynierska</h3>
+            <p>
+              Architektura komponentów, tokeny i kontrolowany ruch budują spójność na
+              poziomie całego produktu.
+            </p>
+          </GlassCard>
+
+          <GlassCard>
+            <p className="impact-grid__label">Efekt biznesowy</p>
+            <h3 className="display-font">Zaufanie i klarowność</h3>
+            <p>
+              Użytkownik czuje spokój, rozumie ofertę i szybciej podejmuje decyzję.
+            </p>
+          </GlassCard>
+        </Reveal>
+      </Section>
+
+      <Section id="mozliwosci" className="section--plain">
+        <Reveal className="section-head">
+          <p className="eyebrow">Możliwości</p>
+          <h2 className="section-title display-font">Co budujemy</h2>
+        </Reveal>
+
+        <div className="cards-grid cards-grid--two">
+          {capabilities.map((item, index) => (
+            <Reveal key={item.title} delay={0.08 * index}>
+              <GlassCard>
+                <h3 className="card-title display-font">{item.title}</h3>
+                <p className="card-summary">{item.summary}</p>
+                <p>{item.description}</p>
+              </GlassCard>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="projekty" className="section--plain divider-top">
+        <Reveal className="section-head section-head--with-link">
+          <div>
+            <p className="eyebrow">Case studies</p>
+            <h2 className="section-title display-font">Wybrane projekty</h2>
+          </div>
+          <ButtonLink href="/projekty" variant="ghost">
+            Zobacz pełną siatkę
+          </ButtonLink>
+        </Reveal>
+
+        <div className="projects-grid">
+          {projects.slice(0, 3).map((project, index) => (
+            <Reveal key={project.title} delay={0.1 * index}>
+              <article className="project-card">
+                <div className="project-card__visual" aria-hidden="true" />
+                <div className="project-card__body">
+                  <p className="project-card__industry">{project.industry}</p>
+                  <h3 className="display-font">{project.title}</h3>
+                  <p>{project.summary}</p>
                 </div>
-                <p className="track-row__desc">{path.description}</p>
-                <Link href={path.href} className="btn btn--primary">
-                  {path.action}
-                </Link>
               </article>
-            ))}
-          </div>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      <section id="about" className="section section--paper divider-top" data-reveal>
-        <div className="page about-grid">
-          <article>
-            <p className="hero__eyebrow" style={{ color: "#677484" }}>
-              Jak pracujemy
-            </p>
-            <h2 className="section-title display-font">
-              Skandynawska prostota i bardzo konkretna treść.
-            </h2>
-            <p className="section-copy">
-              Dbamy o przestrzeń, czytelną hierarchię i język, który brzmi jak rozmowa.
-              Dzięki temu klient od razu rozumie, czym się zajmujesz i co zrobić dalej.
-            </p>
-            <a href="#one-on-one" className="btn btn--secondary">
-              Zobacz konsultacje 1:1
-            </a>
-          </article>
-
-          <article id="one-on-one" className="about-side">
-            <figure className="portrait card" data-parallax data-speed="0.04" data-max="6">
-              <img
-                className="portrait__image"
-                src={portraitImage}
-                alt="Portret osoby w naturalnym świetle na neutralnym tle"
-                loading="lazy"
-              />
-            </figure>
-
-            <ul className="about-list">
-              {[
-                "Porządkujemy przekaz, żeby klient od razu łapał sens oferty.",
-                "Układamy stronę tak, by naturalnie prowadziła do kontaktu.",
-                "Dajemy plan publikacji, który da się utrzymać co tydzień.",
-              ].map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="resources" className="section section--paper divider-top" data-reveal>
-        <div className="page">
-          <div className="section-head">
-            <h2 className="section-title display-font">Materiały</h2>
-            <Link href="/health" className="btn btn--secondary">
-              Sprawdź status strony
+      <Section className="section--soft divider-top">
+        <Reveal className="cta-block">
+          <p className="eyebrow">Następny krok</p>
+          <h2 className="section-title display-font">Porozmawiajmy o projekcie wymagającym precyzji</h2>
+          <p>
+            Jeśli budujesz markę, która potrzebuje klarowności, dyscypliny i głębi,
+            zaprojektujemy dla niej spójny obiekt cyfrowy.
+          </p>
+          <div className="hero__actions">
+            <ButtonLink href="/kontakt" variant="primary">
+              Przejdź do kontaktu
+            </ButtonLink>
+            <Link href="mailto:hello@offhand.pl" className="text-link">
+              hello@offhand.pl
             </Link>
           </div>
-
-          <div className="resource-grid">
-            {resources.map((resource, index) => (
-              <article key={resource.title} className="resource-card card">
-                <div
-                  className="resource-card__media"
-                  data-parallax
-                  data-speed="0.04"
-                  data-max="6"
-                >
-                  <img
-                    src={resourceImages[index % resourceImages.length]}
-                    alt="Detal biurka, notatnika i szkicu w naturalnym świetle"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="resource-card__title display-font">{resource.title}</h3>
-                <p className="resource-card__detail">{resource.detail}</p>
-                <button type="button" className="btn btn--primary">
-                  Poproś o dostęp
-                </button>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="book" className="section cta divider-top" data-reveal>
-        <div className="page">
-          <p className="cta__label">Następny krok</p>
-          <div className="cta__grid">
-            <h2 className="cta__title display-font">
-              Umów 60 minut rozmowy i wyjdź z jasnym planem na najbliższy miesiąc.
-            </h2>
-            <div className="cta__actions">
-              <a
-                href="mailto:hello@offhand.pl?subject=Rozmowa%20o%20stronie%20i%20ofercie"
-                className="btn btn--primary"
-              >
-                Napisz: hello@offhand.pl
-              </a>
-              <Link href="/login" className="btn btn--secondary btn--contrast">
-                Wejdź do strefy demo
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+        </Reveal>
+      </Section>
+    </StudioShell>
   );
 }

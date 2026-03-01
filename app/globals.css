@@ -4,8 +4,8 @@
 @import "./styles/layout.css";
 
 @theme inline {
-  --color-background: var(--warm-off-white);
-  --color-foreground: var(--deep-navy);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
   --font-sans: var(--font-manrope);
   --font-mono: var(--font-manrope);
 }
@@ -14,6 +14,15 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
 }
 
 a {

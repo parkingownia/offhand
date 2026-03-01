@@ -1,13 +1,32 @@
 :root {
-  --deep-navy: #0e1a2b;
-  --soft-navy: #16263d;
-  --warm-off-white: #f4f1ec;
-  --light-stone: #e6e1da;
-  --accent-orange: #e87722;
+  --bg-primary: #f4f8fb;
+  --bg-secondary: #eaf2f7;
+  --surface-white: #ffffff;
 
-  --text-primary: #132131;
-  --text-muted: #4a5664;
-  --text-contrast: #f4f1ec;
+  --text-primary: #1c1f24;
+  --text-secondary: #5a6470;
+  --text-soft: #6b7380;
+
+  --accent-cool-blue: #8fbfd9;
+  --accent-crystal-blue: #6fafc7;
+  --accent-turquoise: #5ec6c6;
+  --accent-soft-violet: #b8a8d8;
+
+  --line-subtle: rgb(28 31 36 / 10%);
+  --line-glass: rgb(255 255 255 / 30%);
+
+  --glass-bg: rgb(255 255 255 / 8%);
+  --glass-bg-strong: rgb(255 255 255 / 14%);
+  --glass-blur: 20px;
+
+  --shadow-soft: 0 24px 70px rgb(24 47 71 / 8%);
+  --shadow-light: 0 10px 30px rgb(24 47 71 / 6%);
+  --focus-ring: 0 0 0 3px rgb(111 175 199 / 36%);
+
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 30px;
+  --radius-pill: 999px;
 
   --layout-max: 1200px;
 
@@ -21,19 +40,15 @@
   --space-8: 64px;
   --space-10: 80px;
   --space-12: 96px;
+  --space-14: 112px;
 
-  --section-pad-y: clamp(56px, 8vw, 92px);
-  --section-pad-x: clamp(20px, 5vw, 56px);
+  --section-y: clamp(74px, 11vw, 128px);
 
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
-
-  --shadow-soft: 0 16px 40px rgb(14 26 43 / 8%);
-  --shadow-wide: 0 26px 76px rgb(14 26 43 / 10%);
-
-  --focus-ring: 0 0 0 3px rgb(232 119 34 / 28%);
-  --line: 1px solid var(--light-stone);
-  --scroll-progress: 0;
+  --foreground: var(--text-primary);
+  --portal-border: rgb(28 31 36 / 12%);
+  --portal-surface: rgb(255 255 255 / 74%);
+  --portal-surface-soft: rgb(255 255 255 / 54%);
+  --portal-muted: var(--text-secondary);
+  --portal-accent: var(--accent-crystal-blue);
+  --portal-accent-soft: var(--accent-cool-blue);
 }
