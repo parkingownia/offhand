@@ -50,35 +50,37 @@
 }
 
 html[data-theme="classic"] {
-  --bg-1: #fdfcf9;
-  --bg-2: #f4f1ec;
+  --bg-1: #ffffff;
+  --bg-2: #f8f6f2;
   --surface: #ffffff;
-  --text-1: #1f232a;
-  --text-2: #595f68;
+  --text-1: #181b20;
+  --text-2: #535962;
 
-  --accent-1: #c3cfda;
-  --accent-2: #9fb2c1;
-  --accent-3: #c7c0d0;
+  --accent-1: #cfd6de;
+  --accent-2: #b3bdc8;
+  --accent-3: #d4cdda;
 
   --copper-1: #b87333;
   --copper-2: #8a4b2a;
-  --copper-glow: rgb(184 115 51 / 8%);
+  --copper-glow: rgb(184 115 51 / 7%);
 
   --radius-nav: 8px;
-  --radius-card: 22px;
+  --radius-card: 18px;
   --radius-btn: 999px;
 
-  --shadow-soft: 0 24px 68px rgb(30 36 44 / 7%);
-  --shadow-light: 0 10px 28px rgb(30 36 44 / 5%);
+  --shadow-soft: 0 22px 62px rgb(23 27 33 / 6%);
+  --shadow-light: 0 10px 24px rgb(23 27 33 / 5%);
 
-  --line-subtle: rgb(31 35 42 / 11%);
+  --line-subtle: rgb(31 35 42 / 9%);
   --line-glass: rgb(31 35 42 / 10%);
-  --line-copper: rgb(184 115 51 / 22%);
-  --line-copper-soft: rgb(184 115 51 / 10%);
+  --line-copper: rgb(184 115 51 / 18%);
+  --line-copper-soft: rgb(184 115 51 / 8%);
 
   --line-opacity: 0.1;
   --line-count: 2;
   --line-copper-ratio: 0.04;
+  --section-y: clamp(86px, 12vw, 146px);
+  --glass-blur: 12px;
 
   --font-head: var(--font-classic-head);
 }

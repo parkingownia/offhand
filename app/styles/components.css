@@ -5,8 +5,11 @@
 }
 
 html[data-theme="classic"] .display-font {
-  letter-spacing: 0.012em;
+  letter-spacing: 0.014em;
   font-weight: 500;
+  font-feature-settings:
+    "liga" 1,
+    "kern" 1;
 }
 
 .btn {
@@ -42,8 +45,8 @@ html[data-theme="classic"] .display-font {
 }
 
 html[data-theme="classic"] .btn--primary {
-  background: linear-gradient(140deg, rgb(255 255 255 / 96%) 0%, rgb(245 240 233 / 86%) 100%);
-  border-color: rgb(31 35 42 / 18%);
+  background: linear-gradient(140deg, rgb(255 255 255 / 98%) 0%, rgb(247 243 236 / 88%) 100%);
+  border-color: rgb(31 35 42 / 16%);
   color: #1f242c;
   box-shadow: 0 10px 26px rgb(30 36 44 / 8%);
 }
@@ -73,8 +76,8 @@ html[data-theme="classic"] .btn--primary:hover {
 }
 
 html[data-theme="classic"] .btn--secondary {
-  background: rgb(255 255 255 / 86%);
-  border-color: rgb(31 35 42 / 14%);
+  background: rgb(255 255 255 / 92%);
+  border-color: rgb(31 35 42 / 12%);
 }
 
 .btn--secondary:hover {
@@ -140,6 +143,7 @@ html[data-theme="classic"] .glass-card {
   border-color: rgb(31 35 42 / 12%);
   background: linear-gradient(145deg, rgb(255 255 255 / 92%), rgb(250 247 242 / 82%));
   box-shadow: 0 18px 52px rgb(30 36 44 / 8%);
+  backdrop-filter: none;
 }
 
 .glass-card__content {
@@ -300,7 +304,7 @@ html[data-theme="geo"] .glass-card--with-corners .corner-marks__corner--br::afte
 }
 
 html[data-theme="classic"] .eyebrow {
-  letter-spacing: 0.19em;
+  letter-spacing: 0.2em;
   color: #747b85;
 }
 
@@ -394,8 +398,11 @@ html[data-theme="classic"] .eyebrow--soft {
 }
 
 html[data-theme="classic"] .theme-toggle__btn {
-  font-family: var(--font-head), sans-serif;
-  letter-spacing: 0.012em;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5e6570;
 }
 
 .theme-toggle__btn {
@@ -575,6 +582,29 @@ html[data-theme="geo"] .theme-toggle__btn.is-active {
 
 .cookie-notice__button {
   min-width: 168px;
+}
+
+html[data-theme="classic"] .cookie-notice {
+  border-color: rgb(31 35 42 / 12%);
+  background: linear-gradient(160deg, rgb(255 255 255 / 95%), rgb(249 246 241 / 84%));
+  box-shadow:
+    0 20px 52px rgb(23 27 33 / 9%),
+    0 0 0 1px rgb(255 255 255 / 48%) inset;
+}
+
+html[data-theme="classic"] .cookie-notice::before {
+  background:
+    radial-gradient(40% 24% at 72% 18%, rgb(184 115 51 / 8%) 0%, transparent 74%),
+    radial-gradient(34% 24% at 16% 76%, rgb(188 197 210 / 12%) 0%, transparent 72%);
+}
+
+html[data-theme="classic"] .cookie-notice__line {
+  opacity: 0.2;
+}
+
+html[data-theme="classic"] .cookie-notice__eyebrow {
+  letter-spacing: 0.18em;
+  color: #7e6f5c;
 }
 
 html[data-theme="geo"] .cookie-notice {
