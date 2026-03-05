@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Offhand: Build + Deploy FTP (out)",
+      "type": "shell",
+      "command": "npm run deploy:ftp",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Offhand: Build + Deploy FTP (dry run)",
+      "type": "shell",
+      "command": "npm run deploy:ftp:dry",
+      "problemMatcher": []
+    }
+  ]
+}

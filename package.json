@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:ftp:only": "node scripts/deploy-ftp.mjs",
+    "deploy:ftp": "npm run build && npm run deploy:ftp:only",
+    "deploy:ftp:dry": "npm run build && node scripts/deploy-ftp.mjs --dry-run"
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
