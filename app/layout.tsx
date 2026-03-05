@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import { companyName } from "@/app/content/studio";
 import ThemeProvider from "@/src/theme/ThemeProvider";
 import { getThemeInitScript } from "@/src/theme/themes";
 import "./globals.css";
 
-const bodyFont = Inter({
-  variable: "--font-body",
+const geoBodyFont = Inter({
+  variable: "--font-geo-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const classicHeadFont = Cormorant_Garamond({
+const classicBodyFont = Plus_Jakarta_Sans({
+  variable: "--font-classic-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const classicHeadFont = Playfair_Display({
   variable: "--font-classic-head",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
@@ -61,7 +68,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
       </head>
       <body
-        className={`${bodyFont.variable} ${classicHeadFont.variable} ${geoHeadFont.variable} antialiased`}
+        className={`${geoBodyFont.variable} ${classicBodyFont.variable} ${classicHeadFont.variable} ${geoHeadFont.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

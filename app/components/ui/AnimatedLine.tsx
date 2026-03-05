@@ -115,14 +115,14 @@ export default function AnimatedLine() {
           initial={{ strokeDashoffset: 1600, opacity: 0.2 }}
           animate={
             reducedMotion
-              ? { strokeDashoffset: 0, opacity: 0.34 }
-              : { strokeDashoffset: [1600, 0], opacity: [0.14, 0.54] }
+              ? { strokeDashoffset: 0, opacity: 0.2 }
+              : { strokeDashoffset: [1600, 0], opacity: [0.08, 0.24] }
           }
           transition={
             reducedMotion
               ? staticTransition
               : {
-                  duration: 12,
+                  duration: 16,
                   repeat: Number.POSITIVE_INFINITY,
                   repeatType: "reverse",
                   ease: "easeInOut",
@@ -136,15 +136,15 @@ export default function AnimatedLine() {
           initial={{ strokeDashoffset: 1650, opacity: 0.12 }}
           animate={
             reducedMotion
-              ? { strokeDashoffset: 0, opacity: 0.24 }
-              : { strokeDashoffset: [1650, 0], opacity: [0.1, 0.32] }
+              ? { strokeDashoffset: 0, opacity: 0.14 }
+              : { strokeDashoffset: [1650, 0], opacity: [0.06, 0.18] }
           }
           transition={
             reducedMotion
               ? staticTransition
               : {
-                  duration: 14,
-                  delay: 0.7,
+                  duration: 18,
+                  delay: 0.9,
                   repeat: Number.POSITIVE_INFINITY,
                   repeatType: "reverse",
                   ease: "easeInOut",
