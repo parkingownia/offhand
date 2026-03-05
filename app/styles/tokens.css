@@ -52,37 +52,38 @@
 }
 
 html[data-theme="classic"] {
-  --bg-1: #ffffff;
-  --bg-2: #f8f6f2;
-  --surface: #ffffff;
-  --text-1: #181b20;
-  --text-2: #535962;
+  --bg-1: #f7eedf;
+  --bg-2: #e8dbc1;
+  --surface: #fbf4e8;
+  --text-1: #19130d;
+  --text-2: #5e4d3a;
+  --text-soft: #82705d;
 
-  --accent-1: #cfd6de;
-  --accent-2: #b3bdc8;
-  --accent-3: #d4cdda;
+  --accent-1: #dbc6a4;
+  --accent-2: #c59c60;
+  --accent-3: #7f8b87;
 
-  --copper-1: #b87333;
-  --copper-2: #8a4b2a;
-  --copper-glow: rgb(184 115 51 / 7%);
+  --copper-1: #c59c60;
+  --copper-2: #7f5a2c;
+  --copper-glow: rgb(197 156 96 / 12%);
 
-  --radius-nav: 8px;
-  --radius-card: 18px;
-  --radius-btn: 999px;
+  --radius-nav: 0px;
+  --radius-card: 10px;
+  --radius-btn: 2px;
 
-  --shadow-soft: 0 22px 62px rgb(23 27 33 / 6%);
-  --shadow-light: 0 10px 24px rgb(23 27 33 / 5%);
+  --shadow-soft: 0 26px 64px rgb(41 28 13 / 10%);
+  --shadow-light: 0 14px 32px rgb(41 28 13 / 7%);
 
-  --line-subtle: rgb(31 35 42 / 9%);
-  --line-glass: rgb(31 35 42 / 10%);
-  --line-copper: rgb(184 115 51 / 18%);
-  --line-copper-soft: rgb(184 115 51 / 8%);
+  --line-subtle: rgb(41 28 13 / 14%);
+  --line-glass: rgb(41 28 13 / 14%);
+  --line-copper: rgb(197 156 96 / 44%);
+  --line-copper-soft: rgb(197 156 96 / 18%);
 
-  --line-opacity: 0.1;
-  --line-count: 2;
-  --line-copper-ratio: 0.04;
-  --section-y: clamp(86px, 12vw, 146px);
-  --glass-blur: 12px;
+  --line-opacity: 0.16;
+  --line-count: 4;
+  --line-copper-ratio: 0.08;
+  --section-y: clamp(92px, 12vw, 150px);
+  --glass-blur: 0px;
 
   --font-body-theme: var(--font-classic-body);
   --font-head: var(--font-classic-head);

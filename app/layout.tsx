@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
+import { Inter, Josefin_Sans, Limelight, Space_Grotesk } from "next/font/google";
 import { companyName } from "@/app/content/studio";
 import ThemeProvider from "@/src/theme/ThemeProvider";
 import { getThemeInitScript } from "@/src/theme/themes";
@@ -11,17 +11,17 @@ const geoBodyFont = Inter({
   display: "swap",
 });
 
-const classicBodyFont = Plus_Jakarta_Sans({
+const classicBodyFont = Josefin_Sans({
   variable: "--font-classic-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
-const classicHeadFont = Playfair_Display({
+const classicHeadFont = Limelight({
   variable: "--font-classic-head",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: "400",
   display: "swap",
 });
 
