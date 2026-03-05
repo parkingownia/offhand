@@ -1,4 +1,5 @@
 import PageBackdrop from "@/app/components/site/PageBackdrop";
+import CookieNotice from "@/app/components/site/CookieNotice";
 import SiteFooter from "@/app/components/site/SiteFooter";
 import SiteHeader from "@/app/components/site/SiteHeader";
 import GeoBackgroundLines from "@/app/components/ui/GeoBackgroundLines";
@@ -16,6 +17,7 @@ export default function StudioShell({ children }: StudioShellProps) {
         <SiteHeader />
         <main className="studio-main">{children}</main>
         <SiteFooter />
+        <CookieNotice />
       </div>
     </>
   );
